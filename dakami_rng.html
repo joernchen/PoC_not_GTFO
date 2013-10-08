@@ -1,0 +1,24 @@
+<html>
+<script>
+function millis() {
+return Date.now();}
+
+function flip_coin() {n=0; then = millis()+1; while( millis()<=then ) {n=!n;} return n;}
+function get_fair_bit() {while(1) {a=flip_coin( );if (a!= flip_coin()) {return(a );}}}
+function get_random_byte (){n=0; bits = 8; while ( bits-- ){n<<=1; n|=get_fair_bit();}
+return n;}
+
+function doit(){
+var i = 100000;
+while(i--){
+var d = document.getElementById("target");
+var content = document.createTextNode( get_random_byte() + "\n");
+d.appendChild(content);
+}
+}
+</script>
+<body onload="doit()">
+<pre id="target">
+</pre>
+</body>
+</html>
